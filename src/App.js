@@ -1,10 +1,12 @@
 import React from 'react';
 import logo from './img/pika.png';
 import './App.css';
-import pokemon from './components/pokemon';
-import berries from './components/berries';
-import machines from './components/machines';
+import Pokemon from './components/Pokemon'
+import PokemonList from './components/PokemonList';
+import Berries from './components/Berries';
+import Machines from './components/Machines';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Error from './components/Error'
 
 const App = () => {
   return (
@@ -32,9 +34,11 @@ const App = () => {
         {/* This page will have a <Link> to the Pokemon Listing (/pokemon/page/0),
          The Berry Listing (/berries/page/0), and the Machine Listing (/machines/page/0) */}
 
-          <Route path='/pokemon/page/:id' exact component={pokemon} />
-          <Route path='/berries/page/:id' exact component={berries} />
-          <Route path='/machines/page/:id' exact component={machines} />
+          <Route path='/pokemon/page/:page' exact component={PokemonList} />
+          <Route path='/pokemon/:id' exact component={Pokemon} />
+          <Route path='/berries/page/:page' exact component={Berries} />
+          <Route path='/machines/page/:page' exact component={Machines} />
+          <Route path='/notfound' exact component={Error}/>
         </div>
       </div>
     </Router>
